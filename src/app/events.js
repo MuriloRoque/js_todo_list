@@ -1,3 +1,5 @@
+import { projectShow } from './projects.js'
+
 const newProject = document.getElementById('new-project');
 const showProject = document.getElementById('show-projects');
 const newTodo = document.getElementById('new-todo');
@@ -22,6 +24,9 @@ export const createEvent = () => {
             elements.forEach((other) => {
                 if (other != elt){
                     other[1].classList.add('d-none');
+                }
+                if (other[1] == projectList){
+                    projectShow();
                 }
             });
         });
