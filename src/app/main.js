@@ -1,5 +1,5 @@
-import { createProject } from './event.js'
+import { createEvent } from './event.js'
 
 export const start = () => {
-  createProject();
+  createEvent();
 }
