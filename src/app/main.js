@@ -1,3 +1,5 @@
-const start = () => {
-  
+import { createProject } from './event.js'
+
+export const start = () => {
+  createProject();
 }
