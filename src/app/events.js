@@ -25,9 +25,6 @@ export const createEvent = () => {
                 if (other != elt){
                     other[1].classList.add('d-none');
                 }
-                if (other[1] == projectList){
-                    projectShow();
-                }
             });
         });
     }

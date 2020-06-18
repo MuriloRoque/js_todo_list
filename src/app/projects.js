@@ -1,3 +1,5 @@
+import { createOptions } from './todos.js';
+
 class Project {
 
   constructor(name) {
@@ -14,14 +16,15 @@ export const projectForm = () => {
     let inputValue = document.getElementById('project-name');
     let project = new Project(inputValue.value);
     projects.push(project);
-    inputValue.textContent = '';
+    document.getElementById('id-project-form').reset();
     localStorage.setItem('projects', JSON.stringify(projects));
     projectShow();
+    createOptions();
     alert('Project was created!')
   })
 }
 
-export const projectShow = () => {
+const projectShow = () => {
   const projects = document.getElementById('project-list');
   let projectName = document.createElement('p');
   projects.appendChild(projectName);
@@ -30,5 +33,10 @@ export const projectShow = () => {
     values.forEach((elt) => {
       projects.children[values.indexOf(elt) + 1].textContent = elt.name;
     })
-  }
+  } 
+  // else {
+  //   let project = new Project('default project');
+  //   projects.push(project);
+  //   localStorage.setItem('projects', JSON.stringify(projects));
+  // }
 }
