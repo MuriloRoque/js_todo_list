@@ -1,3 +1,4 @@
-import { start } from './app/main.js';
+import { start } from './app/main';
 import './main.scss';
-start(); 
+
+start();

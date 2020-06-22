@@ -1,6 +1,6 @@
-import { createEvent } from './events.js';
-import { projectForm, projectShow } from './projects.js'
-import { todoForm, todoShow, createOptions } from './todos.js'
+import { createEvent } from './events';
+import { projectForm, projectShow } from './projects';
+import { todoForm, todoShow, createOptions } from './todos';
 
 export const start = () => {
   createEvent();
@@ -9,4 +9,4 @@ export const start = () => {
   todoForm();
   todoShow();
   createOptions();
-}
+};
