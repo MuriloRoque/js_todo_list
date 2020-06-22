@@ -25,7 +25,7 @@ export const projectForm = () => {
   }
 }
 
-const projectShow = () => {
+export const projectShow = () => {
   const projects = document.getElementById('project-list');
   let projectName = document.createElement('p');
   projects.appendChild(projectName);

@@ -13,9 +13,9 @@ class Todo {
   let todos = [];
   
   export const todoForm = () => {
-    const submit = document.getElementById('todo-submit');
+    const submit = document.getElementById('id-todo-form');
     
-    submit.addEventListener(('click'), () => {
+    submit.onsubmit = () => {
       const title = document.getElementById('title').value;
       const description = document.getElementById('description').value;
       const date = document.getElementById('date').value;
@@ -23,12 +23,13 @@ class Todo {
       const project = document.getElementById('project').value;
 
       let todo = new Todo(title, description, date, priority, project);
-      todos.push(project);
+      todos.push(todo);
       document.getElementById('id-todo-form').reset();
       localStorage.setItem('todos', JSON.stringify(todos));
-      // todoShow();
+      todoShow();
       alert('todo was created!')
-    })
+      return false;
+    }
   }
 
   export const createOptions = () => {
@@ -44,15 +45,15 @@ class Todo {
     }
   }
   
-//   export const todoShow = () => {
-//     const projects = document.getElementById('project-list');
-//     let projectName = document.createElement('p');
-//     projects.appendChild(projectName);
-//     let values = JSON.parse(window.localStorage.getItem('projects'));
-//     if (values != null){
-//       values.forEach((elt) => {
-//         projects.children[values.indexOf(elt) + 1].textContent = elt.name;
-//       })
-//     }
-//   }
+  export const todoShow = () => {
+    const todos = document.getElementById('todo-list');
+    let todoName = document.createElement('p');
+    todos.appendChild(todoName);
+    let values = JSON.parse(window.localStorage.getItem('todos'));
+    if (values != null){
+      values.forEach((elt) => {
+        todos.children[values.indexOf(elt) + 1].textContent = `${elt.title}, due: ${elt.date}`;
+      })
+    }
+  }
   
