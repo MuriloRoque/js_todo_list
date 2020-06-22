@@ -11,8 +11,8 @@ class Project {
 let projects = [];
 
 export const projectForm = () => {
-  const submit = document.getElementById('project-submit');
-  submit.addEventListener(('click'), () => {
+  const submit = document.getElementById('id-project-form');
+  submit.onsubmit = () => {
     let inputValue = document.getElementById('project-name');
     let project = new Project(inputValue.value);
     projects.push(project);
@@ -21,7 +21,8 @@ export const projectForm = () => {
     projectShow();
     createOptions();
     alert('Project was created!')
-  })
+    return false;
+  }
 }
 
 const projectShow = () => {
