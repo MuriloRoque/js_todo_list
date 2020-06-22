@@ -40,7 +40,7 @@ class Todo {
 
     if (values != null){
         values.forEach((elt) => {
-          projects.children[values.indexOf(elt)].textContent = elt.name;
+          projects.children[values.indexOf(elt)+ 1].textContent = elt.name;
         })
     }
   }

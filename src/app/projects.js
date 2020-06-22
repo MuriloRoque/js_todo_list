@@ -26,13 +26,13 @@ export const projectForm = () => {
 }
 
 export const projectShow = () => {
-  const projects = document.getElementById('project-list');
-  let projectName = document.createElement('p');
-  projects.appendChild(projectName);
   let values = JSON.parse(window.localStorage.getItem('projects'));
   if (values != null){
+    const projects = document.getElementById('project-list');
+    let projectName = document.createElement('button');
+    projects.appendChild(projectName);
     values.forEach((elt) => {
-      projects.children[values.indexOf(elt) + 1].textContent = elt.name;
+      projects.children[values.indexOf(elt) + 2].textContent = elt.name;
     })
   } 
   // else {
