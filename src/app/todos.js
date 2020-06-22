@@ -41,17 +41,22 @@ export const createOptions = () => {
     values.forEach((elt) => {
       const projectName = document.createElement('option');
       projects.appendChild(projectName);
-      projects.children[values.indexOf(elt) + 1].textContent = elt.name;
+      projects.children[values.indexOf(elt)].textContent = elt.name;
     });
   }
 };
 
-export const todoShow = () => {
+export const todoShow = (projectName) => {
   const todoList = document.getElementById('todo-list');
   let values = JSON.parse(window.localStorage.getItem('todos'));
-  if (values != null) {
+  todoList.classList.remove('d-none');
+  const projectList = document.getElementById('project-list');
+  
+  projectList.classList.add('d-none');
+  
+  if (values !== null) {
     values.forEach((elt) => {
-      if (todoList.children.length < values.length + 1) {
+     if (elt.project === projectName){
         const todoName = document.createElement('p');
         todoList.appendChild(todoName);
         todoList.children[values.indexOf(elt) + 1].textContent = `${elt.title}, due: ${elt.date}`;
@@ -59,3 +64,4 @@ export const todoShow = () => {
     });
   }
 };
+

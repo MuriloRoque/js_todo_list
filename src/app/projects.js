@@ -1,4 +1,4 @@
-import { createOptions } from './todos';
+import { createOptions, todoShow } from './todos';
 
 class Project {
   constructor(name) {
@@ -10,6 +10,10 @@ let projects = JSON.parse(window.localStorage.getItem('projects'));
 
 if (projects == null) {
   projects = [];
+  const project = new Project("All todos");
+  projects.push(project);
+  localStorage.setItem('projects', JSON.stringify(projects));
+  createOptions();
 }
 
 export const projectForm = () => {
@@ -32,11 +36,16 @@ export const projectShow = () => {
   const values = JSON.parse(window.localStorage.getItem('projects'));
   if (values != null) {
     values.forEach((elt) => {
-      if (projectList.children.length < values.length + 2) {
+      if (projectList.children.length < values.length + 1) {
         const projectName = document.createElement('button');
         projectList.appendChild(projectName);
-        projectList.children[values.indexOf(elt) + 2].textContent = elt.name;
+        projectList.children[values.indexOf(elt) + 1].textContent = elt.name;
+        projectName.addEventListener('click',() => {
+          todoShow(projectName.textContent);
+        })
       }
     });
   }
 };
+
+
