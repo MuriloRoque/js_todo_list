@@ -58,16 +58,32 @@ export const todoShow = (projectName) => {
         const content = document.createElement('div');
         const todoName = document.createElement('p');
         const button = document.createElement('button');
+        const editButton = document.createElement('button');
+        const deleteButton = document.createElement('button');
+
+        editButton.textContent = 'Edit';
+        deleteButton.textContent = 'Delete';
+
+        deleteTodo(deleteButton, elt, values);
+
         if(values[values.indexOf(elt)].complete){
           button.textContent = 'Complete'
         }else{
           button.textContent = 'Not Complete';
         }
         todoComplete(button, elt, values);
-        todoName.textContent = `${elt.title}, due: ${elt.date}`;
+        const { title, description, date, priority } = elt
+        todoName.innerHTML = `
+                            Project: ${projectName}<br>
+                            Title: ${title}<br> 
+                            Description: ${description}<br> 
+                            Due: ${date}<br>
+                            Priority: ${priority}`;
         todoList.appendChild(content);
         content.appendChild(todoName);
         content.appendChild(button);
+        content.appendChild(editButton);
+        content.appendChild(deleteButton);
       }
     });
   }
@@ -85,3 +101,11 @@ const todoComplete = (button, elt, values) => {
     localStorage.setItem('todos', JSON.stringify(values)); 
   })
 };
+
+const deleteTodo = (button, elt, values) => {
+  button.addEventListener('click', () => { 
+    values.splice(values.indexOf(elt), 1);
+    localStorage.setItem('todos', JSON.stringify(values)); 
+    location.reload();
+  })
+}
