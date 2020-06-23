@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/MuriloRoque/js_todo_list#readme",
   "devDependencies": {
+    "bootstrap": "^4.5.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
     "date-fns": "^2.14.0",

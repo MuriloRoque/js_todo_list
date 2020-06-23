@@ -20,10 +20,13 @@ const createEvent = () => {
   elements.forEach(elt => {
     elt[0].addEventListener(('click'), () => {
       elt[1].classList.remove('d-none');
+      elt[1].classList.add('d-flex');
       elements.forEach((other) => {
         if (other !== elt) {
           other[1].classList.add('d-none');
+          other[1].classList.remove('d-flex');
           todoList.classList.add('d-none');
+          todoList.classList.remove('d-flex');
         }
       });
     });

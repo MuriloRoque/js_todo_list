@@ -30,7 +30,8 @@ export const createButtonsDom = (elt, values, todoList, projectName) => {
                       Description: ${description}<br> 
                       Due: ${date}<br>
                       Priority: ${priority}`;
-
+  todoName.classList.add('ml-5');
+  todoList.classList.add('flex-column');
   todoList.appendChild(content);
   content.appendChild(todoName);
   content.appendChild(button);

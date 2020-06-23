@@ -43,14 +43,16 @@ const editTodo = (elt, values, todoList) => {
   const button = document.getElementById('button-edit');
   button.addEventListener('click', () => {
     todoList.classList.add('d-none');
-
+    todoList.classList.remove('d-flex');
     const projectList = document.getElementById('project-list');
 
     projectList.classList.add('d-none');
+    projectList.classList.remove('d-flex');
 
     const todoForm = document.getElementById('todo-form');
 
     todoForm.classList.remove('d-none');
+    todoForm.classList.add('d-flex');
     document.getElementById('title').value = elt.title;
     document.getElementById('description').value = elt.description;
     document.getElementById('date').value = elt.date;
@@ -94,6 +96,7 @@ export const todoShow = (projectName) => {
   const todoList = document.getElementById('todo-list');
 
   todoList.classList.remove('d-none');
+  todoList.classList.add('d-flex');
 
   const values = JSON.parse(window.localStorage.getItem('todos'));
 
