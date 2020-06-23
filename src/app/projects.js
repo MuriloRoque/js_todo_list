@@ -1,4 +1,4 @@
-import { createOptions, todoShow } from './todos';
+import { createOptions } from './todoDom';
 
 class Project {
   constructor(name) {
@@ -8,15 +8,19 @@ class Project {
 
 let projects = JSON.parse(window.localStorage.getItem('projects'));
 
-if (projects == null) {
-  projects = [];
-  const project = new Project('All todos');
-  projects.push(project);
-  localStorage.setItem('projects', JSON.stringify(projects));
-  createOptions();
-}
+const initialSetup = () => {
+  if (projects === null) {
+    projects = [];
+    const project = new Project('All todos');
+    projects.push(project);
+    localStorage.setItem('projects', JSON.stringify(projects));
+    createOptions();
+  }
+};
 
-export const projectForm = () => {
+initialSetup();
+
+const projectForm = () => {
   const submit = document.getElementById('id-project-form');
   submit.onsubmit = () => {
     const inputValue = document.getElementById('project-name');
@@ -29,20 +33,4 @@ export const projectForm = () => {
     return false;
   };
 };
-
-export const projectShow = () => {
-  const projectList = document.getElementById('project-list');
-  const values = JSON.parse(window.localStorage.getItem('projects'));
-  if (values != null) {
-    values.forEach((elt) => {
-      if (projectList.children.length < values.length + 1) {
-        const projectName = document.createElement('button');
-        projectList.appendChild(projectName);
-        projectList.children[values.indexOf(elt) + 1].textContent = elt.name;
-        projectName.addEventListener('click', () => {
-          todoShow(projectName.textContent);
-        });
-      }
-    });
-  }
-};
+export default projectForm;
