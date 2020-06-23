@@ -9,6 +9,7 @@ const projectShow = () => {
         const projectName = document.createElement('button');
         projectName.classList.add('btn','btn-warning','m-3');
         projectList.appendChild(projectName);
+        projectList.classList.add('justify-content-center')
         projectList.children[values.indexOf(elt)].textContent = elt.name;
         projectName.addEventListener('click', () => {
           todoShow(projectName.textContent);

@@ -39,8 +39,8 @@ const editForm = (values, elt) => {
   };
 };
 
-const editTodo = (elt, values, todoList) => {
-  const button = document.getElementById('button-edit');
+const editTodo = (elt, values, todoList, n) => {
+  const button = document.getElementById(`button-edit${n}`);
   button.addEventListener('click', () => {
     todoList.classList.add('d-none');
     todoList.classList.remove('d-flex');
@@ -62,8 +62,8 @@ const editTodo = (elt, values, todoList) => {
   });
 };
 
-const todoComplete = (elt, values) => {
-  const button = document.getElementById('button-complete');
+const todoComplete = (elt, values, n) => {
+  const button = document.getElementById(`button-complete${n}`);
   button.addEventListener('click', () => {
     if (values[values.indexOf(elt)].complete) {
       values[values.indexOf(elt)].complete = false;
@@ -76,8 +76,8 @@ const todoComplete = (elt, values) => {
   });
 };
 
-const deleteTodo = (elt, values) => {
-  const button = document.getElementById('button-delete');
+const deleteTodo = (elt, values, n) => {
+  const button = document.getElementById(`button-delete${n}`);
   button.addEventListener('click', () => {
     values.splice(values.indexOf(elt), 1);
     localStorage.setItem('todos', JSON.stringify(values));
@@ -85,11 +85,11 @@ const deleteTodo = (elt, values) => {
   });
 };
 
-const createButtons = (elt, values, todoList, projectName) => {
-  createButtonsDom(elt, values, todoList, projectName);
-  editTodo(elt, values, todoList);
-  deleteTodo(elt, values);
-  todoComplete(elt, values);
+const createButtons = (elt, values, todoList, projectName, n) => {
+  n = createButtonsDom(elt, values, todoList, projectName, n);
+  editTodo(elt, values, todoList, n);
+  deleteTodo(elt, values, n);
+  todoComplete(elt, values, n);
 };
 
 export const todoShow = (projectName) => {
@@ -99,12 +99,13 @@ export const todoShow = (projectName) => {
   todoList.classList.add('d-flex');
 
   const values = JSON.parse(window.localStorage.getItem('todos'));
-
   if (values !== null) {
-    todoList.querySelectorAll('*').forEach(n => n.remove());
+    todoList.querySelectorAll('*').forEach(i => i.remove());
+    let n = 0;
     values.forEach((elt) => {
       if (elt.project === projectName) {
-        createButtons(elt, values, todoList, projectName);
+        n += 1;
+        createButtons(elt, values, todoList, projectName, n);
       }
     });
   }

@@ -12,26 +12,30 @@ export const createOptions = () => {
   }
 };
 
-export const createButtonsDom = (elt, values, todoList, projectName) => {
+export const createButtonsDom = (elt, values, todoList, projectName, n) => {
   const content = document.createElement('div');
   const todoName = document.createElement('p');
   const button = document.createElement('button');
-  button.setAttribute('id', 'button-complete');
+  button.setAttribute('id', `button-complete${n}`);
+  button.classList.add('btn', 'btn-success', 'buttons', 'mr-3', 'complete-button');
   const editButton = document.createElement('button');
-  editButton.setAttribute('id', 'button-edit');
+  editButton.setAttribute('id', `button-edit${n}`);
+  editButton.classList.add('btn', 'btn-info', 'buttons', 'mr-3');
   const deleteButton = document.createElement('button');
-  deleteButton.setAttribute('id', 'button-delete');
+  deleteButton.setAttribute('id', `button-delete${n}`);
+  deleteButton.classList.add('btn', 'btn-danger', 'buttons', 'mr-3');
   const {
     title, description, date, priority,
   } = elt;
   todoName.innerHTML = `
-                      Project: ${projectName}<br>
-                      Title: ${title}<br> 
-                      Description: ${description}<br> 
-                      Due: ${date}<br>
-                      Priority: ${priority}`;
-  todoName.classList.add('ml-5');
-  todoList.classList.add('flex-column');
+                      <strong>Project:</strong> ${projectName}<br>
+                      <strong>Title:</strong> ${title}<br> 
+                      <strong>Description:</strong> ${description}<br> 
+                      <strong>Due:</strong> ${date}<br>
+                      <strong>Priority:</strong> ${priority}`;
+  content.classList.add('mb-3', 'd-flex', 'border', 'border-dark', 'p-3', 'content');
+  todoList.classList.add('flex-column', 'align-items-center');
+  todoName.classList.add('mr-3');
   todoList.appendChild(content);
   content.appendChild(todoName);
   content.appendChild(button);
@@ -45,4 +49,5 @@ export const createButtonsDom = (elt, values, todoList, projectName) => {
   } else {
     button.textContent = 'Not Complete';
   }
+  return n;
 };
