@@ -1,10 +1,11 @@
 class Todo {
-  constructor(title, description, date, priority, project) {
+  constructor(title, description, date, priority, project, complete) {
     this.title = title;
     this.description = description;
     this.date = date;
     this.priority = priority;
     this.project = project;
+    this.complete = complete;
   }
 }
 
@@ -24,7 +25,7 @@ export const todoForm = () => {
     const priority = document.getElementById('priority').value;
     const project = document.getElementById('project').value;
 
-    const todo = new Todo(title, description, date, priority, project);
+    const todo = new Todo(title, description, date, priority, project, false);
     todos.push(todo);
     document.getElementById('id-todo-form').reset();
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -54,11 +55,33 @@ export const todoShow = (projectName) => {
     todoList.querySelectorAll('*').forEach(n => n.remove());
     values.forEach((elt) => {
       if (elt.project === projectName){
+        const content = document.createElement('div');
         const todoName = document.createElement('p');
+        const button = document.createElement('button');
+        if(values[values.indexOf(elt)].complete){
+          button.textContent = 'Complete'
+        }else{
+          button.textContent = 'Not Complete';
+        }
+        todoComplete(button, elt, values);
         todoName.textContent = `${elt.title}, due: ${elt.date}`;
-        todoList.appendChild(todoName);
+        todoList.appendChild(content);
+        content.appendChild(todoName);
+        content.appendChild(button);
       }
     });
   }
 };
 
+const todoComplete = (button, elt, values) => {
+  button.addEventListener('click', () => {
+    if(values[values.indexOf(elt)].complete){
+      values[values.indexOf(elt)].complete = false;
+      button.textContent = 'Not Complete'
+    }else{
+      values[values.indexOf(elt)].complete = true;
+      button.textContent = 'Complete';
+    }
+    localStorage.setItem('todos', JSON.stringify(values)); 
+  })
+};
