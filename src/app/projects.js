@@ -25,8 +25,7 @@ export const projectForm = () => {
     document.getElementById('id-project-form').reset();
     localStorage.setItem('projects', JSON.stringify(projects));
     createOptions();
-    alert('Project was created!');
-    location.reload();
+    window.location.reload();
     return false;
   };
 };

@@ -1,5 +1,4 @@
 import { projectShow } from './projects';
-import { todoShow } from './todos';
 
 const newProject = document.getElementById('new-project');
 const showProject = document.getElementById('show-projects');
@@ -16,7 +15,7 @@ const elements = [
   [newTodo, todoForm],
 ];
 
-export const createEvent = () => {
+const createEvent = () => {
   elements.forEach(elt => {
     elt[0].addEventListener(('click'), () => {
       elt[1].classList.remove('d-none');
@@ -29,6 +28,7 @@ export const createEvent = () => {
     });
   });
 };
+export default createEvent;
 
 showProject.addEventListener(('click'), () => {
   projectShow();
