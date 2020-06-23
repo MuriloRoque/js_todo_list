@@ -8,7 +8,7 @@ const newTodo = document.getElementById('new-todo');
 const projectForm = document.getElementById('project-form');
 const projectList = document.getElementById('project-list');
 const todoForm = document.getElementById('todo-form');
-const todoList = document.getElementById('todo-list')
+const todoList = document.getElementById('todo-list');
 
 const elements = [
   [newProject, projectForm],

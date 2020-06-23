@@ -10,7 +10,7 @@ let projects = JSON.parse(window.localStorage.getItem('projects'));
 
 if (projects == null) {
   projects = [];
-  const project = new Project("All todos");
+  const project = new Project('All todos');
   projects.push(project);
   localStorage.setItem('projects', JSON.stringify(projects));
   createOptions();
@@ -40,12 +40,10 @@ export const projectShow = () => {
         const projectName = document.createElement('button');
         projectList.appendChild(projectName);
         projectList.children[values.indexOf(elt) + 1].textContent = elt.name;
-        projectName.addEventListener('click',() => {
+        projectName.addEventListener('click', () => {
           todoShow(projectName.textContent);
-        })
+        });
       }
     });
   }
 };
-
-
