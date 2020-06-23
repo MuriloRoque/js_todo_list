@@ -7,6 +7,5 @@ export const start = () => {
   projectForm();
   projectShow();
   todoForm();
-  todoShow();
   createOptions();
 };

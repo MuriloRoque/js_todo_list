@@ -48,18 +48,15 @@ export const createOptions = () => {
 
 export const todoShow = (projectName) => {
   const todoList = document.getElementById('todo-list');
-  let values = JSON.parse(window.localStorage.getItem('todos'));
   todoList.classList.remove('d-none');
-  const projectList = document.getElementById('project-list');
-  
-  projectList.classList.add('d-none');
-  
+  let values = JSON.parse(window.localStorage.getItem('todos'));
   if (values !== null) {
+    todoList.querySelectorAll('*').forEach(n => n.remove());
     values.forEach((elt) => {
-     if (elt.project === projectName){
+      if (elt.project === projectName){
         const todoName = document.createElement('p');
+        todoName.textContent = `${elt.title}, due: ${elt.date}`;
         todoList.appendChild(todoName);
-        todoList.children[values.indexOf(elt) + 1].textContent = `${elt.title}, due: ${elt.date}`;
       }
     });
   }
