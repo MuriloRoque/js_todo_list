@@ -1,5 +1,5 @@
 import {
-  createTodoObject, setComplete, setDelete, getTodoValues,
+  createTodoObject, editTodoObject, setComplete, setDelete, getTodoValues,
 } from './todos';
 
 const editForm = (values, elt) => {
@@ -15,7 +15,7 @@ const editForm = (values, elt) => {
     const date = document.getElementById('date').value;
     const priority = document.getElementById('priority').value;
     const project = document.getElementById('project').value;
-    createTodoObject(title, description, date, priority, project, values);
+    editTodoObject(title, description, date, priority, project, values);
     window.location.reload();
     return false;
   };

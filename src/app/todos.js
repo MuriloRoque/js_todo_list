@@ -21,6 +21,12 @@ export const createTodoObject = (title, description, date, priority, project) =>
   localStorage.setItem('todos', JSON.stringify(todos));
 };
 
+export const editTodoObject = (title, description, date, priority, project, values) => {
+  const todo = new Todo(title, description, date, priority, project, false);
+  values.push(todo);
+  localStorage.setItem('todos', JSON.stringify(values));
+};
+
 export const setComplete = (values) => {
   localStorage.setItem('todos', JSON.stringify(values));
 };
