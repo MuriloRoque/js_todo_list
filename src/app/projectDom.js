@@ -1,10 +1,9 @@
-import { todoShow } from './todos';
-import createProjectObject from './projects'
-import { createOptions } from './todoDom';
+import { todoShow, createOptions } from './todosDom';
+import { createProjectObject } from './projects';
 
-export const projectShow = () => {
+
+export const projectShow = (values) => {
   const projectList = document.getElementById('project-list');
-  const values = JSON.parse(window.localStorage.getItem('projects'));
   if (values != null) {
     values.forEach((elt) => {
       if (projectList.children.length < values.length) {
@@ -21,12 +20,12 @@ export const projectShow = () => {
   }
 };
 
-export const projectForm = () => {
+export const projectForm = (values) => {
   const submit = document.getElementById('id-project-form');
   submit.onsubmit = () => {
     const inputValue = document.getElementById('project-name');
     createProjectObject(inputValue);
-    createOptions();
+    createOptions(values);
     window.location.reload();
     return false;
   };

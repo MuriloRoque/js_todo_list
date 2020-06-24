@@ -1,4 +1,4 @@
-import { createOptions } from './todoDom';
+import { createOptions } from './todosDom';
 
 class Project {
   constructor(name) {
@@ -14,15 +14,17 @@ const initialSetup = () => {
     const project = new Project('All todos');
     projects.push(project);
     localStorage.setItem('projects', JSON.stringify(projects));
-    createOptions();
+    const values = JSON.parse(window.localStorage.getItem('projects'));
+    createOptions(values);
   }
 };
 
 initialSetup();
 
-const createProjectObject = (inputValue) => {
+export const createProjectObject = (inputValue) => {
   const project = new Project(inputValue.value);
   projects.push(project);
   localStorage.setItem('projects', JSON.stringify(projects));
-}
-export default createProjectObject;
+};
+
+export const getProjectValues = () => JSON.parse(window.localStorage.getItem('projects'));

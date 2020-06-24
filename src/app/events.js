@@ -1,5 +1,6 @@
 import { projectShow } from './projectDom';
-import { todoForm } from './todos';
+import { todoForm } from './todosDom';
+import { getProjectValues } from './projects';
 
 const newProject = document.getElementById('new-project');
 const showProject = document.getElementById('show-projects');
@@ -35,7 +36,8 @@ const createEvent = () => {
 export default createEvent;
 
 showProject.addEventListener(('click'), () => {
-  projectShow();
+  const values = getProjectValues();
+  projectShow(values);
 });
 
 newTodo.addEventListener(('click'), () => {
