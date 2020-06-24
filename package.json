@@ -5,7 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server  --config webpack.dev.js --open",
+    "dev": "webpack-dev-server  --config webpack.dev.js --open",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p",
     "build": "webpack --config webpack.prod.js"
   },
   "repository": {

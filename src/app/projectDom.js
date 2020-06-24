@@ -7,9 +7,9 @@ const projectShow = () => {
     values.forEach((elt) => {
       if (projectList.children.length < values.length) {
         const projectName = document.createElement('button');
-        projectName.classList.add('btn','btn-warning','m-3');
+        projectName.classList.add('btn', 'btn-warning', 'm-3');
         projectList.appendChild(projectName);
-        projectList.classList.add('justify-content-center')
+        projectList.classList.add('justify-content-center');
         projectList.children[values.indexOf(elt)].textContent = elt.name;
         projectName.addEventListener('click', () => {
           todoShow(projectName.textContent);
