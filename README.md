@@ -14,7 +14,7 @@ When you open the app, you will see three buttons
 
 ## Screenshot
 
-![Home page](https://imgur.com/2nqyNEO)
+![Home page](https://i.imgur.com/2nqyNEO.png)
 
 ## Live Demo
 
