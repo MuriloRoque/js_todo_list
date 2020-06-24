@@ -1,4 +1,4 @@
-import projectShow from './projectDom';
+import { projectShow } from './projectDom';
 import { todoForm } from './todos';
 
 const newProject = document.getElementById('new-project');

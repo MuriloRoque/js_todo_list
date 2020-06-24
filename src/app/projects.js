@@ -20,17 +20,9 @@ const initialSetup = () => {
 
 initialSetup();
 
-const projectForm = () => {
-  const submit = document.getElementById('id-project-form');
-  submit.onsubmit = () => {
-    const inputValue = document.getElementById('project-name');
-    const project = new Project(inputValue.value);
-    projects.push(project);
-    document.getElementById('id-project-form').reset();
-    localStorage.setItem('projects', JSON.stringify(projects));
-    createOptions();
-    window.location.reload();
-    return false;
-  };
-};
-export default projectForm;
+const createProjectObject = (inputValue) => {
+  const project = new Project(inputValue.value);
+  projects.push(project);
+  localStorage.setItem('projects', JSON.stringify(projects));
+}
+export default createProjectObject;

@@ -1,6 +1,8 @@
 import { todoShow } from './todos';
+import createProjectObject from './projects'
+import { createOptions } from './todoDom';
 
-const projectShow = () => {
+export const projectShow = () => {
   const projectList = document.getElementById('project-list');
   const values = JSON.parse(window.localStorage.getItem('projects'));
   if (values != null) {
@@ -18,4 +20,14 @@ const projectShow = () => {
     });
   }
 };
-export default projectShow;
+
+export const projectForm = () => {
+  const submit = document.getElementById('id-project-form');
+  submit.onsubmit = () => {
+    const inputValue = document.getElementById('project-name');
+    createProjectObject(inputValue);
+    createOptions();
+    window.location.reload();
+    return false;
+  };
+};
