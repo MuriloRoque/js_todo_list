@@ -14,7 +14,7 @@ When you open the app, you will see three buttons
 
 ## Screenshot
 
-![Home page](src/assets/todo.png)
+![Home page](https://imgur.com/2nqyNEO)
 
 ## Live Demo
 
